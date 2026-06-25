@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/swiftspace-web/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  
+  <!-- Primary Meta Tags -->
+  <title>SwiftSpace | AI-Powered Real Estate Platform</title>
+  <meta name="title" content="SwiftSpace | AI-Powered Real Estate Platform">
+  <meta name="description" content="Discover premium verified properties, smart mortgage pathways, and AI-curated real estate deals in Nigeria. SwiftSpace is real estate reimagined for modern living.">
+  <meta name="keywords" content="Real Estate Nigeria, Abuja Properties, Lagos Apartments, AI Real Estate, Home Ownership Nigeria, SwiftSpace">
+  <meta name="author" content="SwiftSpace Team">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://swiftspace.io/">
+  <meta property="og:title" content="SwiftSpace | AI-Powered Real Estate Platform">
+  <meta property="og:description" content="Discover premium verified properties, smart mortgage pathways, and AI-curated real estate deals in Nigeria.">
+  <meta property="og:image" content="favicon.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://swiftspace.io/">
+  <meta property="twitter:title" content="SwiftSpace | AI-Powered Real Estate Platform">
+  <meta property="twitter:description" content="Discover premium verified properties, smart mortgage pathways, and AI-curated real estate deals in Nigeria.">
+  <meta property="twitter:image" content="favicon.png">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="SwiftSpace">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <link rel="manifest" href="manifest.json">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <style>
+    body {
+      background: #0F5A3F;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    #loading-screen {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      background: linear-gradient(135deg, #0F5A3F 0%, #083D2A 100%);
+      transition: opacity 0.5s ease-out;
+    }
+    .splash-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 1s ease-out;
+    }
+    .logo-box {
+      width: 120px;
+      height: 120px;
+      background: white;
+      border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      margin-bottom: 32px;
+      overflow: hidden;
+      position: relative;
+    }
+    .logo-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .app-title {
+      color: white;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .loading-indicator {
+      margin-top: 40px;
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255,255,255,0.1);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="loading-screen">
+    <div class="splash-container">
+      <div class="logo-box">
+        <img src="favicon.png" alt="SwiftSpace Logo" class="logo-image">
+      </div>
+      <div class="app-title">SwiftSpace</div>
+      <div class="loading-indicator"></div>
+    </div>
+  </div>
+
+  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    // SEO & Meta Tag Helper
+    window.updateMetaTags = function(title, description, imageUrl) {
+      if (title) {
+        document.title = title;
+        document.querySelector('meta[name="title"]')?.setAttribute('content', title);
+        document.querySelector('meta[property="og:title"]')?.setAttribute('content', title);
+        document.querySelector('meta[property="twitter:title"]')?.setAttribute('content', title);
+      }
+      if (description) {
+        document.querySelector('meta[name="description"]')?.setAttribute('content', description);
+        document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+        document.querySelector('meta[property="twitter:description"]')?.setAttribute('content', description);
+      }
+      if (imageUrl) {
+        document.querySelector('meta[property="og:image"]')?.setAttribute('content', imageUrl);
+        document.querySelector('meta[property="twitter:image"]')?.setAttribute('content', imageUrl);
+      }
+      if (window.location.href) {
+        let canonical = document.querySelector('link[rel="canonical"]');
+        if (!canonical) {
+          canonical = document.createElement('link');
+          canonical.setAttribute('rel', 'canonical');
+          document.head.appendChild(canonical);
+        }
+        canonical.setAttribute('href', window.location.href.split('?')[0].split('#')[0]);
+      }
+    };
+
+    // JSON-LD Structured Data Helper
+    window.updateJsonLd = function(data) {
+      var script = document.getElementById('json-ld');
+      if (script) {
+        script.textContent = JSON.stringify(data);
+      } else {
+        script = document.createElement('script');
+        script.id = 'json-ld';
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(data);
+        document.head.appendChild(script);
+      }
+    };
+
+    window.addEventListener('load', function() {
+      var loadingScreen = document.getElementById('loading-screen');
+      
+      // Use MutationObserver to detect when Flutter has rendered its view
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.addedNodes.length > 0) {
+            for (var i = 0; i < mutation.addedNodes.length; i++) {
+              if (mutation.addedNodes[i].tagName === 'FLUTTER-VIEW') {
+                setTimeout(function() {
+                  loadingScreen.classList.add('fade-out');
+                  setTimeout(() => loadingScreen.remove(), 600);
+                }, 400);
+                observer.disconnect();
+              }
+            }
+          }
+        });
+      });
+      
+      observer.observe(document.body, { childList: true });
+
+      // Safety timeout in case MutationObserver fails or takes too long
+      setTimeout(function() {
+        if (loadingScreen && !loadingScreen.classList.contains('fade-out')) {
+           loadingScreen.classList.add('fade-out');
+           setTimeout(() => loadingScreen.remove(), 600);
+        }
+      }, 8000); 
+    });
+  </script>
+</body>
+</html>
